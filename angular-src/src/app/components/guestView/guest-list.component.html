@@ -1,0 +1,46 @@
+<div *ngIf="gList">
+  <h4 class="page-header">Guests</h4>
+  <table class="table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Events Attended</th>
+      <th>Donation Total</th>
+      <th>Dietary Requirements</th>
+      <th>RSVP'd</th>
+      <th>Invited</th>
+      <th>Tickets bought</th>
+      <th>Donation for Event</th>
+      <th>Tickets</th>
+      <th>Select</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let attendance of gList">
+      <td>{{attendance.guest.name}}</td>
+      <td>{{attendance.guest.phone}}</td>
+      <td>{{attendance.guest.email}}</td>
+      <td>{{attendance.guest.eventsAttended}}</td>
+      <td>${{attendance.guest.donationTotal}}</td>
+      <td>{{attendance.guest.dietary}}</td>
+      <td>{{attendance.rsvp}}</td>
+      <td>{{attendance.invited}}</td>
+      <td><a class="btn btn-link" [routerLink]="['/view-ticket']" [queryParams]="{ guest: attendance.guest._id , event: attendance.event._id }">{{attendance.ticket_amount}}</a></td>
+      <td>${{attendance.eventDonation}}</td>
+      <td><a class="btn btn-link" [routerLink]="['/buy-ticket']" [queryParams]="{ guest: attendance.guest._id , event: attendance.event._id }">Buy Tickets</a></td>
+      <td><input type="checkbox" name="checks" value={{attendance._id}} ></td>
+    </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-secondary" (click)="rsvpGuest()">RSVP Guests</button>
+<form>
+  <input id="amount" type="number" name="amount" placeholder="Donation Amount">
+  <button class="btn btn-secondary" (click)="addDonation()">Add Donation</button>
+</form>
+<form>
+  <input id="catererEmail" name="catererEmail" placeholder="Caterer's Email Address">
+  <button class="btn btn-secondary" (click)="emailCaterer()">Email Dietary Requirements to Caterers</button>
+</form>
+</div>

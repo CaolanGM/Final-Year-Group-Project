@@ -1,0 +1,6 @@
+<div *ngFor="let event of eventList">
+  <hr>
+  <h3>{{event.name}}</h3>
+  <p>Description: {{event.description}}
+  <a class="btn btn-primary" [routerLink]="['/public-event']" [queryParams]="{ id: event._id }">View Event</a>
+</div>

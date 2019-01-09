@@ -1,0 +1,37 @@
+
+<div *ngIf="gList">
+  <h2 class="page-header">All Guests</h2>
+  <table sortable-table (sorted)="onSorted($event)" class="table-striped">
+    <thead>
+      <tr>
+        <th sortable-column="name" sort-direction="asc">Name</th>
+        <th sortable-column="phone">Phone</th>
+        <th sortable-column="email">Email</th>
+        <th sortable-column="eventsAttended">Events Attended</th>
+        <th sortable-column="donationTotal">Donation Total</th>
+        <th sortable-column="dietary">Dietary Requirements</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let guest of gList">
+        <td>{{guest.name}}</td>
+        <td>{{guest.phone}}</td>
+        <td>{{guest.email}}</td>
+        <td>{{guest.eventsAttended}}</td>
+        <td>${{guest.donationTotal}}</td>
+        <td>{{guest.dietary}}</td>
+        <td><input type="checkbox" name="checks" value={{guest._id}} ></td>
+        <td><a class="btn btn-link" [routerLink]="['/add-guest']" [queryParams]="{ id: guest._id }">Edit Guest</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-secondary" (click)="getValue()">Add Guest to Event</button>
+
+
+  <select id="eventChoice">
+    <option>Choose Event</option>
+    <option *ngFor="let event of eList" value={{event._id}}>{{event.name}}</option>
+  </select>
+
+</div>

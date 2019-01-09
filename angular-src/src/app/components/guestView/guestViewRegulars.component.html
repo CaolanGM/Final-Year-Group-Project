@@ -1,0 +1,21 @@
+<div *ngIf="gList">
+  <h2 class="page-header">Most Regular Guests</h2>
+  <table style="width:100%">
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Events Attended</th>
+      <th>Donation Total</th>
+      <th>Dietary Requirements</th>
+    </tr>
+    <tr *ngFor="let guest of gList">
+      <td>{{guest.name}}</td>
+      <td>{{guest.phone}}</td>
+      <td>{{guest.email}}</td>
+      <td>{{guest.eventsAttended}}</td>
+      <td>${{guest.donationTotal}}</td>
+      <td>{{guest.dietary}}</td>
+    </tr>
+  </table>
+</div>

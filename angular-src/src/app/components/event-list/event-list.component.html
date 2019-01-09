@@ -1,0 +1,21 @@
+<h2>Events</h2>
+<div *ngFor="let event of eventList">
+  <hr>
+  <h3>{{event.name}}</h3>
+  <p>Description: {{event.description}}
+    <br/>Event Type: {{event.event_type}}
+    <br/>Location: {{event.location}}
+    <br/>Seat Count: {{event.seat_count}}
+    <br/>Table Count: {{event.table_count}}
+    <br/>Date: {{event.date | date:'dd-MM-yyyy'}}
+    <br/>Capacity: {{event.capacity}}
+  <br/>Donation Total: ${{event.donationTotal}}
+
+  <div *ngIf="event.menuPath">
+   <button type="button" class="btn btn-success btn-s" (click)="downloadMenu(event.menuPath)">View menu</button>
+  </div>
+  <a class="btn btn-primary" [routerLink]="['/add-event']" [queryParams]="{ id: event._id }">Edit Event</a>
+  <app-guest-list [eventName]="event.name"></app-guest-list>
+</div>
+
+

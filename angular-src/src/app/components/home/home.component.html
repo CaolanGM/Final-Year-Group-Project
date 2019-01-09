@@ -1,0 +1,12 @@
+<div class="jumbotron text-center">
+  <h1>Event Planning</h1>
+  <div *ngIf="!authService.loggedIn()">
+    <a class="btn btn-default" [routerLink]="['/login']">Login</a>
+  </div>
+  <div *ngIf="authService.loggedIn()">
+    <p>Welcome Administrator.</p>
+    <a class="btn btn-primary" [routerLink]="['/register']">Register New Admin</a>
+  </div>
+</div>
+
+<app-homepage-events></app-homepage-events>

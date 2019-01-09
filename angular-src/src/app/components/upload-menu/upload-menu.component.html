@@ -1,0 +1,10 @@
+<h2>{{title}}</h2>
+
+<input id="menu" type="file">
+<select id="eventChoice">
+  <option value="-1">Choose Event</option>
+  <option *ngFor="let event of eList" value={{event._id}}>{{event.name}}</option>
+</select>
+<button type="button" class="btn btn-success btn-s" (click)="upload()">
+  Upload
+</button>

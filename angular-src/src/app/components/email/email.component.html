@@ -1,0 +1,28 @@
+<h2 class="page-header">Send Group Email</h2>
+<!--
+<script src="jquery.js"></script>
+   <script>
+   $(function(){
+     $("#includedContent").load("email_template.html");
+   });
+   </script>
+<div id="includedContent"></div>-->
+Select the event whose attendees you would like to invite:
+<form (submit)="onEmailSubmit()">
+  <select [(ngModel)]="mailingList" name="mailingList">
+    <option *ngFor="let event of eventList" value={{event.name}}>{{event.name}}</option>
+  </select>
+  <div class="form-group">
+    <label>Subject</label>
+    <textarea [(ngModel)]="subject" name="subject" rows="1" class="form-control" required></textarea>
+    <small class="form-text text-muted">Required</small>
+  </div>
+  <div class="form-group">
+    <label>Body</label><br>
+    <label>(use <b>&lt;USERNAME&gt;</b> where you would like the guest's name to appear)</label><br>
+    <label>(use <b>&lt;EVENTDESCRIPTION&gt;</b> where you would like the event description to appear)</label><br>
+    <textarea rows="50" style="height:300px" [(ngModel)]="body" name="body" class="form-control" required></textarea>
+    <small class="form-text text-muted">Required</small>
+  </div>
+  <input type="submit" class="btn btn-primary" value="submit">
+</form>

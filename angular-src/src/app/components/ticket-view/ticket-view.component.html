@@ -1,0 +1,28 @@
+<h1 class="page-header">View Tickets</h1>
+<div>
+  <div>
+    <h2>Event: </h2>
+    <p>Name: {{ event?.name }}</p>
+    <p>Description: {{ event?.description }}</p>
+    <p>Location: {{ event?.location }}</p>
+    <h2>Guest: </h2>
+    <p>Name: {{ guest?.name }}</p>
+    <p>Email: {{ guest?.email }}</p>
+    <p>Phone Number: {{ guest?.phone }}</p>
+  </div>
+  <div>
+    <h2>Tickets</h2>
+    <div *ngFor="let ticket of tickets">
+      <hr>
+      <p>Ticket Code: {{ticket.ticket_code}}
+        <br/>Seat Number: {{ticket.ticket_number}}
+        <br/>Table: {{ticket.table}}
+        <br/>Paid: {{ticket.paid}}
+        <br/>Date: {{ticket.date_bought | date:'dd-MM-yyyy'}}
+        <br/>Dietary Preferences: {{ticket.dietary_preferences}}
+        <br/>Extra comments: {{ticket.extra_comments}}</p>
+    </div>
+
+  </div>
+
+</div>
